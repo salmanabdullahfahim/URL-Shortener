@@ -44,7 +44,7 @@ export const getShortUrl = async (
   try {
     const shortUrl = await urlModel.findOne({ shortUrl: req.params.shortUrl });
     if (!shortUrl) {
-      res.status(404).send({ message: "Full url not found" });
+      res.status(404).send({ message: "Full url not found!" });
     } else {
       shortUrl.clicks++;
       shortUrl.save();
