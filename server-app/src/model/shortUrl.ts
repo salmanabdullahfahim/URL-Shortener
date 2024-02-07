@@ -4,16 +4,16 @@ import { nanoid } from "nanoid";
 const shortUrlSchema = new mongoose.Schema(
   {
     fullUrl: {
-      type: "string",
+      type: String,
       required: true,
     },
     shortUrl: {
-      type: "string",
+      type: String,
       required: true,
       default: nanoid().substring(0, 10),
     },
     clicks: {
-      type: "string",
+      type: Number,
       default: 0,
     },
   },

@@ -36,7 +36,25 @@ export const getAllShortUrl = async (
     res.status(500).send("something went wrong");
   }
 };
-export const getShortUrl = (req: express.Request, res: express.Response) => {};
+
+export const getShortUrl = async (
+  req: express.Request,
+  res: express.Response
+) => {
+  try {
+    const shortUrl = await urlModel.findOne({ shortUrl: req.params.id });
+    if (!shortUrl) {
+      res.status(404).send({ message: "Full url not found" });
+    } else {
+      shortUrl.clicks++;
+      shortUrl.save();
+      res.redirect(`${shortUrl.fullUrl}`);
+    }
+  } catch (error) {
+    res.status(500).send("something went wrong");
+  }
+};
+
 export const deleteShortUrl = (
   req: express.Request,
   res: express.Response
