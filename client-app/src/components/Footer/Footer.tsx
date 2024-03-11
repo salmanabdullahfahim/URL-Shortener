@@ -79,6 +79,7 @@ const Footer = () => {
                 </a>
               </div>
             </div>
+            <h3>Copyright 2024 @URL Shortener</h3>
           </div>
         </div>
       </div>
